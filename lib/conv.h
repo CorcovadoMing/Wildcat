@@ -3,7 +3,7 @@
 
 #include "lib/net.h"
 
-Net* conv(Net*, int, int, int);
+Net* conv(Net*, int, int, int, int, int, int, int);
 void _conv_forward(Layer*, Tensor*);
 
 #endif

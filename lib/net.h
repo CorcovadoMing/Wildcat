@@ -10,7 +10,7 @@ struct _net {
     Layer* last_layer;
 
     Net* (* input)(Net*, int, ...);
-    Net* (* conv)(Net*, int, int, int);
+    Net* (* conv)(Net*, int, int, int, int, int, int, int);
     Net* (* relu)(Net*);
     Net* (* maxpooling)(Net*, int, int);
     Net* (* batchnorm)(Net*);

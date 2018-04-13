@@ -8,11 +8,11 @@ int main() {
     Net* net = initialize();
     net                                  \
     -> input(net, 3, 1, 32, 32)          \
-    -> conv(net, 32, 3, 3)               \
+    -> conv(net, 32, 3, 3, 0, 0, 1, 1)   \
     -> batchnorm(net)                    \
     -> relu(net)                         \
     -> maxpooling(net, 2, 2)             \
-    -> conv(net, 32, 3, 3)               \
+    -> conv(net, 32, 3, 3, 0, 0, 1, 1)   \
     -> batchnorm(net)                    \
     -> relu(net)                         \
     -> linear(net, 10)                   \
