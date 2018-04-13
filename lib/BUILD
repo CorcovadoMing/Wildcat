@@ -1,0 +1,31 @@
+cc_library(
+    name = "wildcat",
+    srcs = [
+        "net.c",
+        "tensor.c",
+        "layer.c",
+        "dataflow.c",
+        "input.c",
+        "conv.c", 
+        "activator.c", 
+        "pooling.c",
+        "batchnorm.c",
+        "linear.c",
+        "ui.c",
+        ],
+    hdrs = [
+        "net.h",
+        "tensor.h",
+        "layer.h",
+        "dataflow.h",
+        "input.h",
+        "conv.h",
+        "activator.h",
+        "pooling.h",
+        "batchnorm.h",
+        "linear.h",
+        "ui.h",
+        ],
+    visibility = ["//main:__pkg__"],
+)
+
