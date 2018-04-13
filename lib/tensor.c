@@ -66,6 +66,8 @@ void view(Tensor* self, int dim, ...) {
     for (int i = 0; i < dim; i += 1) {
         self->shape[i] = va_arg(valist, int);
     }
+
+    va_end(valist);
 }
 
 double at(Tensor* self, ...) {
