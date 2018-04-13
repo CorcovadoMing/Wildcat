@@ -32,12 +32,17 @@ void _linear_forward(Layer* layer, Tensor* data) {
     view(data, 2, data->shape[0], layer->input_shape[0]);
 
     for (int i = 0; i < data->shape[0]; i += 1) {
-        for (int x = 0; x < layer->weights->shape[0]; x += 1) {
-            for (int y = 0; y < layer->weights->shape[1]; y += 1) {
+        for (int y = 0; y < layer->weights->shape[1]; y += 1) {
+            for (int x = 0; x < layer->weights->shape[0]; x += 1) {
                 add(at(data, i, x) * at(layer->weights, x, y),
                     result,
                     i, y);
             }
+
+            // bias
+            add(at(layer->bias, y),
+                result,
+                i, y);
         }
     }
 

@@ -52,12 +52,13 @@ void _conv_forward(Layer* layer, Tensor* data) {
                                 add(data_pixel * weight_pixel,
                                     result,
                                     i, out_channel, x, y);
-                                // bias
-                                add(at(layer->bias, out_channel),
-                                    result,
-                                    i, out_channel, x, y);
                             }
                         }
+
+                        // bias
+                        add(at(layer->bias, out_channel),
+                            result,
+                            i, out_channel, x, y);
                     }
                 }
             }
