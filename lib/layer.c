@@ -33,6 +33,9 @@ Layer* layer_constructor(char* type, int arg_length) {
     Layer* new = malloc(sizeof(Layer));
     strcpy(new->type, type);
     new->next = NULL;
+    new->weights = NULL;
+    new->bias = NULL;
+    new->_forward = NULL;
     new->arg_length = arg_length;
 
     if (arg_length) {

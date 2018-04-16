@@ -59,7 +59,7 @@ Net* softmax(Net* self) {
         new->output_shape[i] = new->input_shape[i];
     }
 
-    new->_forward = _softmax_forward;
+    new->_forward = &_softmax_forward;
     return append(self, new);
 }
 

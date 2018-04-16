@@ -2,6 +2,9 @@
 #include "lib/conv.h"
 #include <stdlib.h>
 
+
+#include <stdio.h>
+
 Net* conv(Net* self, int k, int w, int h, int pad_w, int pad_h, int stride_w, int stride_h) {
     Layer* new = layer_constructor("conv", 7);
     new->arg_list[0] = k;
@@ -22,8 +25,8 @@ Net* conv(Net* self, int k, int w, int h, int pad_w, int pad_h, int stride_w, in
     new->output_shape = malloc(new->output_dim * sizeof(int));
     new->output_shape[0] = k;
     // ref: http://cs231n.github.io/convolutional-networks/
-    new->output_shape[1] = (new->input_shape[1] - w + (2 * pad_w)) / stride_w + 1;
-    new->output_shape[2] = (new->input_shape[2] - h + (2 * pad_h)) / stride_h + 1;
+    new->output_shape[1] = ((new->input_shape[1] - w + (2 * pad_w)) / stride_w) + 1;
+    new->output_shape[2] = ((new->input_shape[2] - h + (2 * pad_h)) / stride_h) + 1;
     new->weights = vempty_tensor(4, new->input_shape[0], w, h, k);
     new->bias = vempty_tensor(1, k);
     new->_forward = &_conv_forward;
