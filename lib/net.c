@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <math.h>
 #include <string.h>
+#include "lib/type.h"
 #include "lib/net.h"
 
 void summary(Net* self) {
@@ -66,7 +67,7 @@ Net* forward(Net* net, DataFlow* data) {
 
         memcpy(data->result->data + ((data->cur_iteration - 1) * data->batch_size * result_offset),
                data->slice->data,
-               data->slice->total * sizeof(double));
+               data->slice->total * sizeof(data_t));
         next_batch(data);
     }
 

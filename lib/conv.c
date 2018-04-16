@@ -1,3 +1,4 @@
+#include "lib/type.h"
 #include "lib/conv.h"
 #include <stdlib.h>
 
@@ -38,8 +39,8 @@ void _conv_forward(Layer* layer, Tensor* data) {
             for (int in_channel = 0; in_channel < layer->input_shape[0]; in_channel += 1) {
                 for (int x = 0; x < layer->output_shape[1]; x += 1) {
                     for (int y = 0; y < layer->output_shape[2]; y += 1) {
-                        double data_pixel = 0;
-                        double weight_pixel = 0;
+                        data_t data_pixel = 0;
+                        data_t weight_pixel = 0;
 
                         for (int w = 0; w < layer->arg_list[1]; w += 1) {
                             for (int h = 0; h < layer->arg_list[2]; h += 1) {

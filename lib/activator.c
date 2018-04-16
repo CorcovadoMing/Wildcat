@@ -1,3 +1,4 @@
+#include "lib/type.h"
 #include "lib/activator.h"
 #include <stdlib.h>
 #include <math.h>
@@ -64,7 +65,7 @@ Net* softmax(Net* self) {
 
 void _softmax_forward(Layer* layer, Tensor* data) {
     for (int i = 0; i < data->shape[0]; i += 1) {
-        double sum = 0;
+        data_t sum = 0;
 
         for (int j = 0; j < layer->output_shape[0]; j += 1) {
             sum += exp(at(data, i, j));

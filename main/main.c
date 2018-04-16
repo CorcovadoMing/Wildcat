@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/net.h"
+
+//#define USE_INT
+
 #include "lib/ui.h"
+#include "lib/net.h"
 
 int main() {
     // Network

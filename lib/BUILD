@@ -25,6 +25,7 @@ cc_library(
         "batchnorm.h",
         "linear.h",
         "ui.h",
+        "type.h",
         ],
     visibility = ["//main:__pkg__"],
 )

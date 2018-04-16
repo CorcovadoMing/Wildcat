@@ -1,3 +1,4 @@
+#include "lib/type.h"
 #include "lib/pooling.h"
 #include <stdlib.h>
 #include <math.h>
@@ -29,7 +30,7 @@ void _maxpooling_forward(Layer* layer, Tensor* data) {
         for (int in_channel = 0; in_channel < layer->input_shape[0]; in_channel += 1) {
             for (int x = 0; x < layer->output_shape[1]; x += 1) {
                 for (int y = 0; y < layer->output_shape[2]; y += 1) {
-                    double tmp = at(data, i, in_channel, x, y);
+                    data_t tmp = at(data, i, in_channel, x, y);
 
                     for (int comp_x = 0; comp_x < layer->arg_list[0]; comp_x += 1) {
                         for (int comp_y = 0; comp_y < layer->arg_list[1]; comp_y += 1) {

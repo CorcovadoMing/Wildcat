@@ -70,7 +70,7 @@ void view(Tensor* self, int dim, ...) {
     va_end(valist);
 }
 
-double at(Tensor* self, ...) {
+data_t at(Tensor* self, ...) {
     va_list valist;
     va_start(valist, self->dimention);
     long long loc = offset(self->dimention, self->shape, valist);
@@ -78,7 +78,7 @@ double at(Tensor* self, ...) {
     return self->data[loc];
 }
 
-void assign(double value, Tensor* self, ...) {
+void assign(data_t value, Tensor* self, ...) {
     va_list valist;
     va_start(valist, self->dimention);
     long long loc = offset(self->dimention, self->shape, valist);
@@ -86,7 +86,7 @@ void assign(double value, Tensor* self, ...) {
     self->data[loc] = value;
 }
 
-void add(double value, Tensor* self, ...) {
+void add(data_t value, Tensor* self, ...) {
     va_list valist;
     va_start(valist, self->dimention);
     long long loc = offset(self->dimention, self->shape, valist);

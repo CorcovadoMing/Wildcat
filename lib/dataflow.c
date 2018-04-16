@@ -39,8 +39,8 @@ DataFlow* batch(DataFlow* self, int batch_size) {
     self->max_iteration = (int)ceil(self->total / (float)batch_size);
     self->slice->shape[0] = batch_size;
     self->slice->total = batch_size * (self->slice->total / self->total);
-    self->slice->data = malloc(self->slice->total * sizeof(double));
-    memcpy(self->slice->data, self->data->data, self->slice->total * sizeof(double));
+    self->slice->data = malloc(self->slice->total * sizeof(data_t));
+    memcpy(self->slice->data, self->data->data, self->slice->total * sizeof(data_t));
     return self;
 }
 
@@ -70,9 +70,9 @@ void next_batch(DataFlow* self) {
         total *= self->slice->shape[i];
     }
 
-    self->slice->data = malloc(self->slice->total * sizeof(double));
+    self->slice->data = malloc(self->slice->total * sizeof(data_t));
     int loc = (self->cur_iteration - 1) * self->batch_size;
-    memcpy(self->slice->data, self->data->data + loc, self->slice->total * sizeof(double));
+    memcpy(self->slice->data, self->data->data + loc, self->slice->total * sizeof(data_t));
 }
 
 void describe(DataFlow* self) {
