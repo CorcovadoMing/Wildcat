@@ -70,7 +70,7 @@ void next_batch(DataFlow* self) {
         total *= self->slice->shape[i];
     }
 
-    self->slice->data = malloc(self->slice->total * sizeof(data_t));
+    self->slice->data = malloc(total * sizeof(data_t));
     int loc = (self->cur_iteration - 1) * self->batch_size;
     memcpy(self->slice->data, self->data->data + loc, self->slice->total * sizeof(data_t));
 }
