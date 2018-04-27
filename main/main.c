@@ -10,20 +10,17 @@ int main() {
     // Network
     Net* net = initialize();
     net                                  \
-    -> input(net, 3, 1, 32, 32)          \
-    -> conv(net, 32, 3, 3, 0, 0, 1, 1)   \
+    -> input(net, 3, 2, 32, 32)          \
+    -> conv(net, 32, 3, 3, 0, 0, 2, 2)   \
     -> batchnorm(net)                    \
     -> relu(net)                         \
-    -> maxpooling(net, 2, 2)             \
-    -> conv(net, 32, 3, 3, 0, 0, 1, 1)   \
+    -> conv(net, 32, 3, 3, 0, 0, 2, 2)   \
     -> batchnorm(net)                    \
     -> relu(net)                         \
-    -> linear(net, 10)                   \
-    -> softmax(net);
+    -> linear(net, 512);
     summary(net);
     // Data
-    DataFlow* data = empty(4, 2, 1, 32, 32);
-    data->batch(data, 1); // if needed
+    DataFlow* data = empty(4, 1, 2, 32, 32); // four-dimension, with (32x32x2) and total 1 image input
     describe(data);
     // Forward
     net->forward(net, data);
@@ -35,6 +32,9 @@ int main() {
 
         printf("\n");
     }
+
+    // Output shape
+    printf("%d %d\n", data->result->shape[0], data->result->shape[1]);
 
     return 0;
 }
